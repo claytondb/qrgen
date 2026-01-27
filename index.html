@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Gen - Fast QR Code Generator</title>
+    <meta name="description" content="Generate QR codes instantly for URLs, text, WiFi, contacts, and more. Free and fast.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⬛ QR Gen</h1>
+            <p class="tagline">Generate QR codes in seconds. Free forever.</p>
+        </header>
+
+        <main>
+            <div class="generator-section">
+                <!-- Type Selector -->
+                <div class="type-selector">
+                    <button class="type-btn active" data-type="url">🔗 URL</button>
+                    <button class="type-btn" data-type="text">📝 Text</button>
+                    <button class="type-btn" data-type="wifi">📶 WiFi</button>
+                    <button class="type-btn" data-type="email">📧 Email</button>
+                    <button class="type-btn" data-type="phone">📞 Phone</button>
+                    <button class="type-btn" data-type="sms">💬 SMS</button>
+                </div>
+
+                <!-- Input Forms -->
+                <div class="input-section">
+                    <!-- URL Input -->
+                    <div class="input-form" id="form-url">
+                        <input type="url" id="input-url" placeholder="https://example.com" autofocus>
+                    </div>
+
+                    <!-- Text Input -->
+                    <div class="input-form" id="form-text" style="display:none;">
+                        <textarea id="input-text" placeholder="Enter any text..."></textarea>
+                    </div>
+
+                    <!-- WiFi Input -->
+                    <div class="input-form" id="form-wifi" style="display:none;">
+                        <input type="text" id="wifi-ssid" placeholder="Network Name (SSID)">
+                        <input type="password" id="wifi-password" placeholder="Password">
+                        <select id="wifi-security">
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                            <option value="">No Password</option>
+                        </select>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="input-form" id="form-email" style="display:none;">
+                        <input type="email" id="email-to" placeholder="recipient@example.com">
+                        <input type="text" id="email-subject" placeholder="Subject (optional)">
+                        <textarea id="email-body" placeholder="Message (optional)"></textarea>
+                    </div>
+
+                    <!-- Phone Input -->
+                    <div class="input-form" id="form-phone" style="display:none;">
+                        <input type="tel" id="input-phone" placeholder="+1 234 567 8900">
+                    </div>
+
+                    <!-- SMS Input -->
+                    <div class="input-form" id="form-sms" style="display:none;">
+                        <input type="tel" id="sms-phone" placeholder="+1 234 567 8900">
+                        <textarea id="sms-message" placeholder="Pre-filled message (optional)"></textarea>
+                    </div>
+                </div>
+
+                <!-- Generate Button -->
+                <button id="generate-btn" class="generate-btn">Generate QR Code</button>
+            </div>
+
+            <!-- QR Display -->
+            <div class="qr-section" id="qr-section" style="display:none;">
+                <div class="qr-display">
+                    <canvas id="qr-canvas"></canvas>
+                </div>
+
+                <!-- Customization -->
+                <div class="customize-section">
+                    <div class="customize-row">
+                        <label>Size:</label>
+                        <input type="range" id="qr-size" min="128" max="512" value="256">
+                        <span id="size-value">256px</span>
+                    </div>
+                    <div class="customize-row">
+                        <label>Foreground:</label>
+                        <input type="color" id="qr-fg" value="#000000">
+                    </div>
+                    <div class="customize-row">
+                        <label>Background:</label>
+                        <input type="color" id="qr-bg" value="#ffffff">
+                    </div>
+                </div>
+
+                <!-- Download Buttons -->
+                <div class="download-buttons">
+                    <button id="download-png" class="download-btn">📥 Download PNG</button>
+                    <button id="download-svg" class="download-btn">📥 Download SVG</button>
+                    <button id="copy-btn" class="download-btn">📋 Copy Image</button>
+                </div>
+            </div>
+
+            <!-- History -->
+            <div class="history-section">
+                <h2>📜 Recent QR Codes</h2>
+                <div class="history-list" id="history-list">
+                    <p class="empty-state">Generated QR codes will appear here</p>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <h2>📖 QR Code Types Explained</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="info-icon">🔗</span>
+                        <h3>URL</h3>
+                        <p>Opens a website when scanned</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">📶</span>
+                        <h3>WiFi</h3>
+                        <p>Auto-connects to WiFi network</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">📧</span>
+                        <h3>Email</h3>
+                        <p>Opens email composer</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="info-icon">📞</span>
+                        <h3>Phone</h3>
+                        <p>Initiates a phone call</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with ❤️ • No tracking • No signup required</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
